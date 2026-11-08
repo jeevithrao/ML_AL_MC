@@ -1,0 +1,10 @@
+data/
+*.npy
+*.ogg
+*.pt
+*.pth
+*.tflite
+*.onnx
+checkpoints/
+.ipynb_checkpoints/
+__pycache__/
