@@ -1,0 +1,7 @@
+{
+  "val_auc": 0.9626580444172663,
+  "test_auc": 0.9652553277946259,
+  "params_M": 4.24,
+  "epochs": 10,
+  "backbone": "efficientnet_b0"
+}
