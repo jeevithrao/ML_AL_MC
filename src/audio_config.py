@@ -1,0 +1,10 @@
+SR = 32000            # sample rate (Hz), native to the dataset
+CHUNK_SEC = 5         # window length in seconds
+N_MELS = 128          # mel bands (image height)
+N_FFT = 1024          # FFT window
+HOP = 512             # hop length -> 313 frames per 5 s
+FMIN, FMAX = 50, 14000
+TOP_DB = 80           # dynamic range kept below the loudest bin
+MAX_READ_SEC = 60     # read at most this much audio per clip
+N_CHUNKS = 3          # keep up to this many chunks per clip
+MIN_TAIL_SEC = 1.0    # keep a leftover tail only if at least this long

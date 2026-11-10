@@ -8,3 +8,4 @@ data/
 checkpoints/
 .ipynb_checkpoints/
 __pycache__/
+*.npz
