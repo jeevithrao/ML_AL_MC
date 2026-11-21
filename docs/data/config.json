@@ -1,0 +1,1 @@
+{"sr": 32000, "nFft": 1024, "hop": 512, "nMels": 128, "nSamples": 160000, "nFrames": 313, "topDb": 80, "padMode": "constant"}

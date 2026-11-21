@@ -9,3 +9,5 @@ checkpoints/
 .ipynb_checkpoints/
 __pycache__/
 *.npz
+!docs/data/
+!docs/model/*.onnx

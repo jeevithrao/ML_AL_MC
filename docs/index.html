@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Western Ghats bird detector</title>
+<style>
+  :root { --bg:#f6f7f4; --card:#ffffff; --text:#1d2420; --muted:#66706a; --accent:#2f7d4f; --accent-text:#ffffff;
+          --line:#dfe4de; --yes:#1f7a45; --no:#a2542a; --rec:#b3261e; --bar:#e5ebe4; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141916; --card:#1d2420; --text:#e7ece8; --muted:#9aa59e; --accent:#4cae75; --accent-text:#0d1410;
+            --line:#2c3630; --yes:#63c88c; --no:#e0925f; --rec:#ff8a80; --bar:#2c3630; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width:640px; margin:0 auto; padding:20px 16px 48px; }
+  h1 { font-size:1.4rem; margin:0 0 4px; }
+  .muted { color:var(--muted); font-size:.9rem; }
+  .controls { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 8px; }
+  button, select { font:inherit; border-radius:12px; border:1px solid var(--line); padding:12px 16px; background:var(--card); color:var(--text); }
+  button { background:var(--accent); color:var(--accent-text); border-color:var(--accent); font-weight:600; flex:1 1 auto; }
+  button.secondary { background:var(--card); color:var(--text); border-color:var(--line); }
+  button:disabled { opacity:.45; }
+  #status { margin:12px 0; padding:10px 12px; border-radius:10px; background:var(--card); border:1px solid var(--line); min-height:2.6em; }
+  #status.ok { border-color:var(--yes); } #status.err { border-color:var(--no); } #status.rec { border-color:var(--rec); color:var(--rec); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin:10px 0; }
+  .head { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+  .verdict { font-weight:600; margin:4px 0 8px; } .verdict.yes { color:var(--yes); } .verdict.no { color:var(--no); }
+  .warn { color:var(--no); font-size:.9rem; margin-bottom:6px; }
+  .row { display:grid; grid-template-columns: 1fr 80px 40px; gap:8px; align-items:center; font-size:.92rem; margin:3px 0; }
+  .name { overflow-wrap:anywhere; } .pct { text-align:right; font-variant-numeric:tabular-nums; }
+  .bar { display:block; height:8px; background:var(--bar); border-radius:4px; overflow:hidden; }
+  .fill { display:block; height:100%; background:var(--accent); }
+  details { margin-top:24px; } summary { cursor:pointer; font-weight:600; }
+  details p { margin:8px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Bird sound detector</h1>
+  <p class="muted">Recognises 182 bird species of the Western Ghats. The model runs on this device and no audio is uploaded.</p>
+  <div class="controls">
+    <select id="dur" aria-label="Recording length">
+      <option value="5">5 s</option><option value="10" selected>10 s</option><option value="15">15 s</option><option value="30">30 s</option>
+    </select>
+    <button id="btnRec" disabled>Record</button>
+    <button id="btnFile" class="secondary" disabled>Choose audio file</button>
+    <input type="file" id="file" accept="audio/*" hidden>
+  </div>
+  <div id="status">Starting…</div>
+  <div id="results"></div>
+  <details>
+    <summary>About and tips</summary>
+    <p>Each 5-second window is converted to a mel spectrogram and scored by a small distilled MobileNetV3 network (about 1.7 M parameters). Detections need a probability of at least 50%.</p>
+    <p>Recording tips: stay still, get as close to the bird as you safely can, and avoid wind and speech. Phone voice processing is switched off so birdsong is not filtered out.</p>
+    <p>This is a research demo. The model was trained on clean recordings, so noisy field audio can produce false detections or misses. Treat results as hints, not identifications.</p>
+    <p><button id="btnTest" class="secondary" disabled>Run self-test</button></p>
+  </details>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
+<script src="dsp.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
