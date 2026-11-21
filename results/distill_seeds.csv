@@ -1,0 +1,5 @@
+model,val_auc,test_auc,seed
+mnv3s_ce,0.9567,0.9556,0
+mnv3s_kd_T2_a05,0.9611,0.9634,0
+mnv3s_ce,0.9466,0.9566,1
+mnv3s_kd_T2_a05,0.9587,0.9599,1

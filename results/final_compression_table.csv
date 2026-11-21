@@ -1,0 +1,4 @@
+model,size_MB,lat_b1_ms,lat_b32_ms,win_per_s_b1,val_auc,test_auc,size_x_smaller,b1_x_faster,b32_x_faster,e2e_x_faster
+student FP32 (ONNX),6.82,4.7,62.9,80.0,0.9611,0.9634,2.48,2.81,7.99,1.68
+student INT8-D (ONNX),2.58,11.0,125.0,53.2,0.813,0.8114,6.57,1.2,4.02,1.12
+B0 FP32 (ONNX),16.94,13.2,502.5,47.5,0.9627,0.9653,1.0,1.0,1.0,1.0
