@@ -17,7 +17,7 @@ results/     small outputs: splits, metrics, plots, active learning runs, effici
 docs/        web demo (index.html, app.js, dsp.js, data/, model/) served by GitHub Pages
 requirements.txt
 ```
-Data, spectrograms and PyTorch checkpoints are **not** stored in Git (see section 5).
+Data, spectrograms and PyTorch checkpoints are **not** stored in Git (download links in section 11).
 
 ## 3. Modules (src/)
 | Module | What it does |
@@ -129,3 +129,13 @@ The split is fixed and committed (`results/file_splits.csv`, seed 42). Training 
 Code license: MIT (see LICENSE). Model weights and any audio derived from Xeno-canto or BirdCLEF recordings follow their own terms (Xeno-canto recordings carry Creative Commons licenses that vary per recording); check them before reuse.
 
 Data: BirdCLEF 2024 (Kahl et al., Overview of BirdCLEF 2024, CEUR-WS Vol. 3740) with recordings from Xeno-canto. Built with PyTorch, timm, librosa, ONNX Runtime and ONNX Runtime Web.
+
+## 11. Resources for evaluators (large files are not in Git)
+- GitHub repository: https://github.com/jeevithrao/ML_AL_MC
+- Live demo: https://jeevithrao.github.io/ML_AL_MC/
+- Google Drive folder (shared with the instructor): https://drive.google.com/drive/folders/1QqTkX97V40NsMkjmBe8fDgNYfWXJ0idQ?usp=sharing
+  - mels.tar (5 GB): preprocessed spectrograms, restored automatically by the notebooks
+  - checkpoints/: baseline_best.pt (EfficientNet-B0), mnv3s_kd_T2_a05_best.pt (distilled student) and the other student checkpoints
+  - al_runs/: active learning run files (also copied to results/al in this repository)
+  - export/: ONNX models (b0_fp32.onnx, student_fp32.onnx)
+- Dataset: BirdCLEF 2024 on Kaggle, https://www.kaggle.com/c/birdclef-2024 (join the competition and accept its rules to download)
